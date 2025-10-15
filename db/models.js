@@ -1,18 +1,33 @@
-const mongoose = require('mongoose');
-
-const trackedVinSchema = new mongoose.Schema({
-  vin: { type: String, unique: true },
-  addedAt: { type: Date, default: Date.now }
+const subscriptionSchema = new mongoose.Schema({
+  keyword: String,
+  chatId: Number,
+  createdAt: { type: Date, default: Date.now }
 });
 
-const TrackedVin = mongoose.model('TrackedVin', trackedVinSchema);
+const Subscription = mongoose.model('Subscription', subscriptionSchema);
 
-const addTrackedVin = async (vin) => {
-  try {
-    await TrackedVin.updateOne({ vin }, { vin }, { upsert: true });
-  } catch (err) {
-    console.error('❌ Ошибка сохранения VIN', err);
-  }
+const addSubscription = async (chatId, keyword) => {
+  await Subscription.updateOne({ chatId, keyword }, { chatId, keyword }, { upsert: true });
 };
 
-module.exports = { TrackedVin, addTrackedVin };
+const removeSubscription = async (chatId, keyword) => {
+  await Subscription.deleteOne({ chatId, keyword });
+};
+
+const getSubscriptions = async (chatId) => {
+  return await Subscription.find({ chatId });
+};
+
+const getAllSubscriptions = async () => {
+  return await Subscription.find({});
+};
+
+module.exports = {
+  TrackedVin,
+  addTrackedVin,
+  Subscription,
+  addSubscription,
+  removeSubscription,
+  getSubscriptions,
+  getAllSubscriptions
+};
