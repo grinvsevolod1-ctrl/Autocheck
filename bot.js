@@ -15,6 +15,8 @@ const unsubscribe = require('./commands/unsubscribe');
 const mylist = require('./commands/mylist');
 const compare = require('./commands/compare');
 const brand = require('./commands/brand');
+const vibe = require('./commands/vibe');
+
 
 // Авторассылка
 const { runNotifier } = require('./services/notifier');
@@ -41,6 +43,7 @@ bot.command('mylist', mylist);
 bot.command('profit', profit);
 bot.command('compare', compare);
 bot.command('brand', brand);
+bot.command('vibe', vibe);
 
 // Запуск
 bot.launch();
