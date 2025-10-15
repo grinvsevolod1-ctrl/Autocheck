@@ -7,6 +7,7 @@ const bot = new Telegraf(process.env.BOT_TOKEN);
 connectMongo();
 
 // Команды
+const profit = require('./commands/profit');
 const topFlood = require('./commands/topFlood');
 const trackVin = require('./commands/trackVin');
 const subscribe = require('./commands/subscribe');
@@ -35,6 +36,7 @@ bot.command('track', trackVin);
 bot.command('subscribe', subscribe);
 bot.command('unsubscribe', unsubscribe);
 bot.command('mylist', mylist);
+bot.command('profit', profit);
 
 // Запуск
 bot.launch();
