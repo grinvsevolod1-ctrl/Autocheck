@@ -13,6 +13,10 @@ const subscribe = require('./commands/subscribe');
 const unsubscribe = require('./commands/unsubscribe');
 const mylist = require('./commands/mylist');
 
+// Авторассылка
+const { runNotifier } = require('./services/notifier');
+setInterval(runNotifier, 10 * 60 * 1000); // каждые 10 минут
+
 // Приветствие
 bot.start((ctx) =>
   ctx.reply(`🚗 Добро пожаловать в AutoSniper!
