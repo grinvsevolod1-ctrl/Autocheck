@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-// Заглушка: возвращает фейковые данные
+// Заглушка: возвращает список утопленных авто
 module.exports.getTopFloodCars = async () => {
   return [
     {
@@ -26,4 +26,19 @@ module.exports.getTopFloodCars = async () => {
       link: 'https://www.copart.com/lot/87654321'
     }
   ];
+};
+
+// Заглушка: возвращает авто по VIN
+module.exports.getCarByVin = async (vin) => {
+  return {
+    year: 2020,
+    make: 'Audi',
+    model: 'Q5',
+    damage: 'Flood',
+    location: 'California',
+    mileage: '38,000 mi',
+    bid: 3100,
+    profit: 4200,
+    link: `https://www.copart.com/lot/${vin}`
+  };
 };
