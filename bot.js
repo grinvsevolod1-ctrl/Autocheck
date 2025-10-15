@@ -13,6 +13,7 @@ const trackVin = require('./commands/trackVin');
 const subscribe = require('./commands/subscribe');
 const unsubscribe = require('./commands/unsubscribe');
 const mylist = require('./commands/mylist');
+const compare = require('./commands/compare');
 
 // Авторассылка
 const { runNotifier } = require('./services/notifier');
@@ -37,6 +38,7 @@ bot.command('subscribe', subscribe);
 bot.command('unsubscribe', unsubscribe);
 bot.command('mylist', mylist);
 bot.command('profit', profit);
+bot.command('compare', compare);
 
 // Запуск
 bot.launch();
